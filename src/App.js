@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './style.css';
-import Showlist from './Showlist';
+import ListToDo from './AppComponents/ListToDo';
 
 class App extends Component {
     constructor(){
         super();
         this.state = {
-            toDoList : [
+            listToDo : [
                 {
                     id: 1,
                     name: 'A'
@@ -23,13 +23,12 @@ class App extends Component {
         }
     }
     render() {
-        console.log(this.state.toDoList);
         return (
             <div className="container mt-4">
                 <h3>To-Do List</h3>
                 <div></div>
                 <div className="container-showlist">
-                    <Showlist showList={this.state.toDoList}/>
+                    <ListToDo showListToDo={this.state.listToDo}/>
                 </div>
             </div>
         );

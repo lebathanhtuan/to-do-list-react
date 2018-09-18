@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-import './style.css';
+import './../style.css';
+import ListItem from './ListItem';
 
-class Showlist extends Component {
+class ListToDo extends Component {
     render() {
-        var showListProps = this.props.showList.map((list, index) => {
+        var showList = this.props.showListToDo.map((list, index) => {
             return (
-                <tr key={index}>
-                    <td>{index}</td>
-                    <td>{list.name}</td>
-                    <td></td>
-                </tr>
+                <ListItem key={index} indexItem={index+1} listItem={list}/>
             )
         });
         return (
@@ -22,11 +19,11 @@ class Showlist extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                    {showListProps}
+                    {showList}
                 </tbody>
             </table>
         );
     }
 }
 
-export default Showlist;
+export default ListToDo;
