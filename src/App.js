@@ -7,6 +7,7 @@ class App extends Component {
     constructor(){
         super();
         this.addItem = this.addItem.bind(this);
+        this.editItem = this.editItem.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
         this.state = {
             listToDo : [
@@ -15,6 +16,9 @@ class App extends Component {
                 },
                 {
                     name: 'Pha cà phê cho anh Chiến'
+                },
+                {
+                    name: 'Làm bài tập React'
                 }
             ]
         }
@@ -25,6 +29,14 @@ class App extends Component {
         var newListToDo = listToDo.concat(value);
         this.setState({
             listToDo: newListToDo
+        })
+    }
+
+    editItem(id, value){
+        var listToDo = this.state.listToDo;
+        listToDo[id] = value;
+        this.setState({
+            listToDo : listToDo
         })
     }
     
@@ -42,7 +54,11 @@ class App extends Component {
                 <h3>To-Do List</h3>
                 <AddContent addItem={this.addItem}/>
                 <div className="container-showlist">
-                    <ListToDo showListToDo={this.state.listToDo} deleteItem={this.deleteItem}/>
+                    <ListToDo 
+                        showListToDo={this.state.listToDo} 
+                        deleteItem={this.deleteItem}
+                        editItem={this.editItem}
+                    />
                 </div>
             </div>
         );
