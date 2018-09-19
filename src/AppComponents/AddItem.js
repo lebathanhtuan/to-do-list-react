@@ -30,7 +30,6 @@ class AddItem extends Component {
                     type="text" 
                     className="form-control" 
                     name="nameItem"
-                    value={this.state.nameItem.name}
                     onChange={this.getNameItem}
                 />
                 <button className="btn btn-outline-success ml-2" onClick={() => this.props.onClickButtonSubmit(this.state.nameItem)}>Xác nhận</button>

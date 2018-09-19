@@ -6,7 +6,13 @@ class ListToDo extends Component {
     render() {
         var showList = this.props.showListToDo.map((list, index) => {
             return (
-                <ListItem key={index} indexItem={index} listItem={list} deleteItem={this.props.deleteItem}/>
+                <ListItem 
+                    key={index} 
+                    indexItem={index} 
+                    listItem={list.name} 
+                    deleteItem={this.props.deleteItem}
+                    editItem={this.props.editItem}
+                />
             )
         });
         return (
@@ -15,7 +21,7 @@ class ListToDo extends Component {
                     <tr>
                         <th>STT</th>
                         <th>To-do</th>
-                        <th>Action</th>
+                        <th className="text-right action">Action</th>
                     </tr>
                 </thead>
                 <tbody>
