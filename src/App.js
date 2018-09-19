@@ -1,21 +1,48 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './style.css';
+import ListToDo from './AppComponents/ListToDo';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+    constructor(){
+        super();
+        this.deleteItem = this.deleteItem.bind(this);
+        this.state = {
+            listToDo : [
+                {
+                    id: 1,
+                    name: 'A'
+                },
+                {
+                    id: 2,
+                    name: 'B'
+                },
+                {
+                    id: 3,
+                    name: 'C'
+                }
+            ]
+        }
+    }
+    
+    deleteItem(id){
+        var listToDo = this.state.listToDo;
+        listToDo.splice(id, 1);
+        this.setState({
+            listToDo : listToDo
+        })
+    }
+
+    render() {
+        return (
+            <div className="container mt-4">
+                <h3>To-Do List</h3>
+                <div></div>
+                <div className="container-showlist">
+                    <ListToDo showListToDo={this.state.listToDo} deleteItem={this.deleteItem}/>
+                </div>
+            </div>
+        );
+    }
 }
 
 export default App;
