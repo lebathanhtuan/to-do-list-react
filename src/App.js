@@ -1,27 +1,31 @@
 import React, { Component } from 'react';
 import './style.css';
 import ListToDo from './AppComponents/ListToDo';
+import AddContent from './AppComponents/AddContent';
 
 class App extends Component {
     constructor(){
         super();
+        this.addItem = this.addItem.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
         this.state = {
             listToDo : [
                 {
-                    id: 1,
-                    name: 'A'
+                    name: 'Nộp bài cho anh Chiến đẹp trai'
                 },
                 {
-                    id: 2,
-                    name: 'B'
-                },
-                {
-                    id: 3,
-                    name: 'C'
+                    name: 'Pha cà phê cho anh Chiến'
                 }
             ]
         }
+    }
+
+    addItem(value){
+        var listToDo = this.state.listToDo;
+        var newListToDo = listToDo.concat(value);
+        this.setState({
+            listToDo: newListToDo
+        })
     }
     
     deleteItem(id){
@@ -36,7 +40,7 @@ class App extends Component {
         return (
             <div className="container mt-4">
                 <h3>To-Do List</h3>
-                <div></div>
+                <AddContent addItem={this.addItem}/>
                 <div className="container-showlist">
                     <ListToDo showListToDo={this.state.listToDo} deleteItem={this.deleteItem}/>
                 </div>
