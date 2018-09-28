@@ -10,11 +10,9 @@ class ListItem extends Component {
         this.state = {
             displayDefault: 'inline-block',
             displayEdit: 'none',
-            nameItem: [
-                {
-                    name: this.props.listItem.name
-                }
-            ]
+            nameItem: {
+                name: this.props.listItem.name
+            }
         }
     }
 
@@ -54,11 +52,9 @@ class ListItem extends Component {
     getNameItem(e){
         var value = e.target.value;
         this.setState({
-            nameItem: [
-                {
-                    name: value
-                }
-            ]
+            nameItem: {
+                name: value
+            }
         })
     }
 
@@ -72,13 +68,14 @@ class ListItem extends Component {
                         type="text" 
                         className="form-control"
                         name="nameItemEdit"
+                        value={this.state.nameItem.name}
                         style={this.displayEdit()}
                         onChange={this.getNameItem}
                     />
                 </td>
                 <td className="text-right">
                     <button 
-                        className="btn btn-outline-success mr-2" 
+                        className="btn btn-outline-success mr-2"
                         style={this.displayDefault()} 
                         onClick={this.onClickButtonEdit}
                     >
@@ -87,7 +84,7 @@ class ListItem extends Component {
                     <button 
                         className="btn btn-outline-success mr-2" 
                         style={this.displayEdit()}
-                        onClick={() => {this.props.editItem(this.props.indexItem, this.state.nameItem[0]); this.onClickButtonSave()}}
+                        onClick={() => {this.props.editItem(this.props.indexItem, this.state.nameItem); this.onClickButtonSave()}}
                     >
                         Lưu
                     </button>
